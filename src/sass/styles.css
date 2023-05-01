@@ -1,0 +1,18 @@
+.is-hidden {
+    display: none;
+}
+
+.search-form {
+    margin: 0 auto;
+}
+
+.container {
+    width: 1200px;
+    padding: 0 15px;
+    outline: 1px solid tomato;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: flex;
+}
