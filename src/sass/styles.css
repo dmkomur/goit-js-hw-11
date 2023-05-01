@@ -8,6 +8,11 @@ p {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #37474F;
+}
+
 .body {
     background-color: #ECEFF1;
 }
@@ -38,7 +43,7 @@ p {
 .photo-card {
     max-width: 280;
     border-radius: 4px;
-    overflow: ;
+    overflow: hidden;
     background-color: #CFD8DC;
     box-shadow: 5px 6px 11px -9px #000000;
 }

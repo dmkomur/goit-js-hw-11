@@ -1,6 +1,8 @@
 import  Fetcher  from "./js/fetcherApi";
 import makeMarkup from "./js/markupApi";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import simpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 
 const galleryRef = document.querySelector('.gallery');
@@ -10,6 +12,7 @@ const pixaBayFetcher = new Fetcher();
 
 formRef.addEventListener('submit', onFormSubmit);
 
+const backdropGallery = new simpleLightbox('.gallery a');
 
 async function onFormSubmit(event) {
     event.preventDefault();
@@ -20,10 +23,10 @@ async function onFormSubmit(event) {
     insertMarkup(fullString);
     if (pixaBayFetcher.page < pixaBayFetcher.totalPage) {
         pixaBayFetcher.page += 1;  
-        showBtnLoad();        
+        showBtnLoad();    
+        backdropGallery.refresh();
     }
-    
-}
+    }
 async function onBtnLoadClick() {
     hideBtnLoad();
     const data = await pixaBayFetcher.getRequest();
@@ -32,7 +35,8 @@ async function onBtnLoadClick() {
     if (pixaBayFetcher.page === pixaBayFetcher.totalPage) { Notify.info("We're sorry, but you've reached the end of search results.") }
     if (pixaBayFetcher.page < pixaBayFetcher.totalPage) {
         pixaBayFetcher.page += 1;  
-        showBtnLoad();        
+        showBtnLoad();       
+        backdropGallery.refresh();
     }
 }
 

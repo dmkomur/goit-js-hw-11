@@ -1,8 +1,10 @@
 export default function makeMarkup(array) {
     const markupStrings = array.map(el => {
-        return `<div class="photo-card">
+        return `<a href=${el.largeImageURL}><div class="photo-card">
   <img src="${el.webformatURL
-}" alt="${el.tags}" loading="lazy" />
+          }" alt="${el.tags}" loading="lazy" 
+Width="640"
+Height="360"/>
   <div class="info">
     <p class="info-item">
       <b>Likes: </b>${el.likes}
@@ -18,7 +20,7 @@ export default function makeMarkup(array) {
 }
     </p>
   </div>
-</div>`
+</div></a>`
 
     })
 
