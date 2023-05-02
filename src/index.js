@@ -12,6 +12,7 @@ const pixaBayFetcher = new Fetcher();
 
 formRef.addEventListener('submit', onFormSubmit);
 
+
 const backdropGallery = new simpleLightbox('.gallery a');
 
 async function onFormSubmit(event) {
@@ -26,7 +27,9 @@ async function onFormSubmit(event) {
         showBtnLoad();    
         backdropGallery.refresh();
     }
-    }
+}
+    
+
 async function onBtnLoadClick() {
     hideBtnLoad();
     const data = await pixaBayFetcher.getRequest();
@@ -38,6 +41,14 @@ async function onBtnLoadClick() {
         showBtnLoad();       
         backdropGallery.refresh();
     }
+    const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: "smooth",
+});
 }
 
 function insertMarkup(fullMarkup) { 
